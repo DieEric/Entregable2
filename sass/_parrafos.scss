@@ -1,0 +1,20 @@
+.parrafoGrande {
+  display: flex;
+  justify-content: center;
+  padding-top: 230px;
+  font-size: 40px;
+  animation-name: animacionTexto;
+  animation-timing-function: ease;
+  animation-duration: 5s;
+}
+
+.parrafo {
+  display: flex;
+  letter-spacing: 2px;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  animation-name: animacionTexto;
+  animation-timing-function: ease;
+  animation-duration: 5s;
+}

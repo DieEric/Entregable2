@@ -1,100 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Ubuntu&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Oswald&family=Ubuntu&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Oswald&family=Ubuntu&family=Ubuntu+Condensed&display=swap");
-@font-face {
-  font-family: poppins;
-  src: url(../fuentes/Poppins-Regular.ttf);
-}
-
-@font-face {
-  font-family: poppins__bold;
-  src: url(../fuentes/Poppins-Bold.ttf);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #f3f7ff;
-  padding: 10px 0;
-  position: fixed;
-  z-index: 1;
-  right: 0;
-  top: 0;
-  left: 0;
-}
-header .lista {
-  list-style: none;
-  text-decoration: none;
-}
-header .lista li a:hover {
-  background-color: #d6d4d4;
-  border-radius: 5px;
-}
-
-.cuerpo {
-  background-image: url(../imagenes/fondoIndex.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.parrafoGrande,
-.parrafo {
-  display: flex;
-  justify-content: center;
-  padding-top: 230px;
-  font-size: 40px;
-  animation-name: animacionTexto;
-  animation-timing-function: ease;
-  animation-duration: 5s;
-}
-
-.parrafo {
-  display: flex;
-  letter-spacing: 2px;
-  justify-content: center;
-  padding-top: 50px;
-  padding-bottom: 60px;
-  animation-name: animacionTexto;
-  animation-timing-function: ease;
-  animation-duration: 5s;
-}
-
-footer {
-  padding: 1em 0;
-  background-color: #1c276c;
-  margin-top: auto;
-}
-footer .logo__footer {
-  position: relative;
-  top: 190px;
-}
-footer .logo__footer .footer__lista {
-  list-style: none;
-  margin-top: auto;
-}
-footer .textoRedes {
-  font-size: 20px;
-  /* font-family: poppins; */
-  color: #ece9e9;
-  padding: 4rem 0;
-}
-footer .redes li {
-  display: inline-block;
-}
-footer .redes li a img {
-  width: 80px;
-  height: 75px;
-}
+@import "variables";
+@import "fuentes";
+@import "generales";
+@import "nav";
+@import "body";
+@import "parrafos";
+@import "footer";
 
 /* PROPIEDADES */
+
 .cuerpoPropiedades {
   background-image: url(../imagenes/fondoPropiedades.jpeg);
   background-repeat: no-repeat;
@@ -111,7 +24,7 @@ footer .redes li a img {
   justify-content: center;
   top: 6rem;
   font-size: 55px;
-  color: #ffffff;
+  color: $color;
   animation-name: animacionTexto;
   animation-timing-function: ease;
   animation-duration: 5s;
@@ -139,16 +52,16 @@ footer .redes li a img {
   100% {
     transform: translateY(50px);
     opacity: 0;
-    -webkit-clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
-    clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
   }
 }
 
 .propiedades ul {
   display: flex;
   justify-content: space-between;
-  margin: 90px;
-  padding-top: 90px;
+  margin: $size;
+  padding-top: $size;
   position: relative;
   right: 20px;
 }
@@ -225,6 +138,7 @@ footer .redes li a img {
 }
 
 /* TASACION */
+
 .cuerpoTasacion {
   background-image: url(../imagenes/fondoTasacion.jpeg);
   background-repeat: no-repeat;
@@ -248,7 +162,7 @@ footer .redes li a img {
 .form p {
   font-size: 26px;
   font-family: "Ubuntu Condensed", sans-serif;
-  color: #ffffff;
+  color: $color;
 }
 
 .datos {
@@ -288,7 +202,7 @@ footer .redes li a img {
   font-family: "Ubuntu Condensed", sans-serif;
   width: 100%;
   background-color: #1c276c;
-  color: #ffffff;
+  color: $color;
   border-radius: 5px;
   border: 0px;
   border: 2px solid transparent;
@@ -335,6 +249,7 @@ footer .redes li a img {
 }
 
 /* NOSOTROS */
+
 .cuerpoNosotros {
   background-image: url(../imagenes/fondoNosotros.jpeg);
   background-repeat: no-repeat;
@@ -374,6 +289,7 @@ footer .redes li a img {
 }
 
 /* CONTACTO */
+
 .cuerpoContacto {
   background-image: url(../imagenes/fondoContacto.jpeg);
   background-repeat: no-repeat;
@@ -406,46 +322,43 @@ footer .redes li a img {
   padding-bottom: 100px;
 }
 
-.lista__inicio {
-  font-size: 20px;
-  color: white;
+// MAPAS
+$lista: (
+  inicio: white,
+  propiedades: white,
+  tasacion: white,
+  nosotros: white,
+  contacto: white,
+);
+
+@each $list, $col in $lista {
+  .lista__#{$list} {
+    font-size: 20px;
+    color: $col;
+  }
 }
 
-.lista__propiedades {
-  font-size: 20px;
-  color: white;
-}
+// EXTEND
 
-.lista__tasacion {
-  font-size: 20px;
-  color: white;
+.parrafoGrande {
+  color: $color;
 }
-
-.lista__nosotros {
-  font-size: 20px;
-  color: white;
-}
-
-.lista__contacto {
-  font-size: 20px;
-  color: white;
-}
-
-.parrafoGrande,
 .parrafo {
-  color: #ffffff;
-}
-
-.parrafo {
+  @extend .parrafoGrande;
   font-size: 33px;
 }
 
+// MIXIND
+@mixin sizeHW($width, $height) {
+  width: $width;
+  height: $height;
+}
 .logo {
-  width: 180px;
-  height: 110px;
+  @include sizeHW(180px, 110px);
 }
 
 /* RESPONSIVE */
+
 .header_index {
   grid-area: header;
 }
@@ -515,14 +428,17 @@ footer .redes li a img {
     justify-content: space-between;
     align-items: center;
   }
+
   .logo {
     width: 180px;
     height: 110px;
     margin-left: 20px;
   }
+
   .lista li {
     display: inline-block;
   }
+
   .lista li a {
     text-decoration: none;
     list-style: none;
@@ -533,38 +449,45 @@ footer .redes li a img {
     transition: all 0.5s linear;
     color: #212323;
   }
+
   .cuadroNegro {
     background-color: #ffffff;
     border-radius: 10px;
     width: 30rem;
     height: 15rem;
   }
+
   .cuadroNegro img {
     width: 125px;
     height: 80px;
     padding: 10px;
     margin-right: 25px;
   }
+
   .cuadroNegro p {
     padding: 10px;
     font-size: 17px;
     font-family: poppins;
   }
+
   .info {
     display: flex;
     justify-content: center;
     margin-left: 25px;
   }
+
   .info img {
     border-radius: 10px;
     width: 30rem;
     height: 15rem;
   }
+
   .juntar {
     display: flex;
     justify-content: center;
     padding-top: 100px;
   }
+
   .footer__lista li a {
     text-decoration: none;
     letter-spacing: 2px;
@@ -572,15 +495,18 @@ footer .redes li a img {
     position: relative;
     top: 50px;
   }
+
   .redes {
     display: flex;
     justify-content: center;
     position: relative;
     bottom: 37px;
   }
+
   .textoRedes {
     margin-left: 50.4rem;
   }
+
   .email {
     color: #c0c0c0;
     font-family: "Ubuntu", sans-serif;
@@ -592,7 +518,9 @@ footer .redes li a img {
     align-items: center;
     bottom: 140px;
   }
+
   /* TASACION */
+
   .ordenar {
     display: flex;
     justify-content: space-between;
@@ -600,13 +528,16 @@ footer .redes li a img {
     margin-top: 14rem;
     padding-bottom: 120px;
   }
+
   /* NOSOTROS */
+
   .infoNosotros {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 200px;
   }
+
   .foto {
     width: 599px;
     height: 350px;
@@ -615,6 +546,7 @@ footer .redes li a img {
 }
 
 /* RESPONSIVE INDEX*/
+
 @media (min-width: 576px) and (max-width: 720px) {
   .wrapper {
     grid-template-columns: auto;
@@ -627,6 +559,7 @@ footer .redes li a img {
       "imagen"
       "footer";
   }
+
   header {
     padding: 10px 0;
     position: fixed;
@@ -635,6 +568,7 @@ footer .redes li a img {
     top: 0;
     left: 0;
   }
+
   .cuerpo {
     width: 720px;
     height: auto;
@@ -643,21 +577,25 @@ footer .redes li a img {
     flex-direction: column;
     min-height: 100vh;
   }
+
   footer {
     padding: 1em 0;
     background-color: #1c276c;
     margin-top: auto;
   }
+
   .footer__lista {
     list-style: none;
     margin-left: 60px;
     position: relative;
     bottom: 120px;
   }
+
   .footer__lista li {
     display: inline-block;
     padding: 10px;
   }
+
   .footer__lista li a {
     text-decoration: none;
     color: #ece9e9;
@@ -666,10 +604,12 @@ footer .redes li a img {
     line-height: 30px;
     letter-spacing: 2px;
   }
+
   .lista {
     display: flex;
     justify-content: center;
   }
+
   .lista li a {
     font-size: 15px;
     margin-top: 30px;
@@ -682,10 +622,12 @@ footer .redes li a img {
     font-family: Poppins__bold, Haettenschweiler, "Arial Narrow Bold",
       sans-serif;
   }
+
   header .logo {
     margin: auto;
     display: block;
   }
+
   .cuadroNegro {
     background-color: #ffffff;
     border-radius: 10px;
@@ -695,38 +637,46 @@ footer .redes li a img {
     margin: auto;
     margin-top: 30px;
   }
+
   .cuadroNegro img {
     width: 125px;
     height: 80px;
     padding: 10px;
   }
+
   .cuadroNegro p {
     padding: 10px;
     font-size: 17px;
     font-family: poppins;
   }
+
   .info {
     display: flex;
     justify-content: center;
     margin-top: 20px;
   }
+
   .info img {
     border-radius: 10px;
     width: 30rem;
     height: 15rem;
   }
+
   .redes {
     display: flex;
     justify-content: center;
     margin-bottom: 52px;
   }
+
   .redes li {
     display: inline-block;
   }
+
   .redes li a img {
     width: 60px;
     height: 55px;
   }
+
   .textoRedes {
     font-size: 20px;
     font-family: poppins;
@@ -735,6 +685,7 @@ footer .redes li a img {
     position: relative;
     top: 35px;
   }
+
   .email {
     color: #e2dfdf;
     font-family: "Ubuntu", sans-serif;
@@ -759,6 +710,7 @@ footer .redes li a img {
       "imagen"
       "footer";
   }
+
   header {
     padding: 10px 0;
     position: fixed;
@@ -767,6 +719,7 @@ footer .redes li a img {
     top: 0;
     left: 0;
   }
+
   .cuerpo {
     margin: 0;
     width: 576px;
@@ -775,21 +728,25 @@ footer .redes li a img {
     flex-direction: column;
     min-height: 100vh;
   }
+
   footer {
     padding: 1em 0;
     background-color: #1c276c;
     margin-top: auto;
   }
+
   .footer__lista {
     list-style: none;
     margin-left: 10px;
     position: relative;
     bottom: 120px;
   }
+
   .footer__lista li {
     display: inline-block;
     padding: 10px;
   }
+
   .footer__lista li a {
     text-decoration: none;
     color: #ece9e9;
@@ -798,10 +755,12 @@ footer .redes li a img {
     line-height: 30px;
     letter-spacing: 2px;
   }
+
   .lista {
     display: flex;
     justify-content: center;
   }
+
   .lista li a {
     font-size: 15px;
     margin-top: 30px;
@@ -814,17 +773,20 @@ footer .redes li a img {
     font-family: Poppins__bold, Haettenschweiler, "Arial Narrow Bold",
       sans-serif;
   }
+
   header .logo {
     margin: auto;
     display: block;
   }
-  .parrafoGrande,
-  .parrafo {
+
+  .parrafoGrande {
     font-size: 30px;
   }
+
   .parrafo {
     font-size: 20px;
   }
+
   .cuadroNegro {
     background-color: #ffffff;
     border-radius: 10px;
@@ -834,38 +796,46 @@ footer .redes li a img {
     margin: auto;
     margin-top: 30px;
   }
+
   .cuadroNegro img {
     width: 90px;
     height: 60px;
     padding: 10px;
   }
+
   .cuadroNegro p {
     padding: 10px;
     font-size: 12px;
     font-family: poppins;
   }
+
   .info {
     display: flex;
     justify-content: center;
     margin-top: 20px;
   }
+
   .info img {
     border-radius: 10px;
     width: 25rem;
     height: 12rem;
   }
+
   .redes {
     display: flex;
     justify-content: center;
     margin-bottom: 52px;
   }
+
   .redes li {
     display: inline-block;
   }
+
   .redes li a img {
     width: 60px;
     height: 55px;
   }
+
   .textoRedes {
     font-size: 16px;
     font-family: poppins;
@@ -874,6 +844,7 @@ footer .redes li a img {
     position: relative;
     top: 35px;
   }
+
   .email {
     color: #e2dfdf;
     font-family: "Ubuntu", sans-serif;
@@ -887,6 +858,7 @@ footer .redes li a img {
 }
 
 /* RESPONSIVE PROPIEDADES*/
+
 @media (min-width: 576px) and (max-width: 720px) {
   .wrapperP {
     grid-template-columns: auto;
@@ -898,11 +870,13 @@ footer .redes li a img {
       "propiedades"
       "footer";
   }
+
   .cuerpoPropiedades {
     margin: 0;
     width: 720px;
     height: auto;
   }
+
   .propiedades ul {
     display: flex;
     justify-content: space-between;
@@ -911,6 +885,7 @@ footer .redes li a img {
     margin: 50px;
     padding-top: 10px;
   }
+
   .propiedades ul li img {
     border-radius: 20px;
     padding: 10px;
@@ -928,11 +903,13 @@ footer .redes li a img {
       "propiedades"
       "footer";
   }
+
   .cuerpoPropiedades {
     margin: 0;
     width: 576px;
     height: auto;
   }
+
   .propiedades ul {
     display: flex;
     align-items: center;
@@ -942,6 +919,7 @@ footer .redes li a img {
     position: relative;
     right: 15px;
   }
+
   .propiedades ul li img {
     border-radius: 20px;
     padding: 10px;
@@ -949,6 +927,7 @@ footer .redes li a img {
 }
 
 /* RESPONSIVE TASACION */
+
 @media (min-width: 576px) and (max-width: 720px) {
   .wrapperT {
     grid-template-columns: auto;
@@ -960,11 +939,13 @@ footer .redes li a img {
       "form"
       "footer";
   }
+
   .cuerpoTasacion {
     margin: 0;
     width: 720px;
     height: auto;
   }
+
   .ordenar {
     margin-top: 20rem;
     padding-bottom: 100px;
@@ -982,11 +963,13 @@ footer .redes li a img {
       "form"
       "footer";
   }
+
   .cuerpoTasacion {
     margin: 0;
     width: 576px;
     height: auto;
   }
+
   .ordenar {
     margin-top: 20rem;
     padding-bottom: 100px;
@@ -994,6 +977,7 @@ footer .redes li a img {
 }
 
 /* RESPONSIVE NOSOTROS  */
+
 @media (min-width: 576px) and (max-width: 720px) {
   .wrapperN {
     grid-template-columns: auto;
@@ -1006,27 +990,32 @@ footer .redes li a img {
       "cuadro_nosotros"
       "footer";
   }
+
   .cuerpoNosotros {
     margin: 0;
     width: 720px;
     height: auto;
   }
+
   .cajaUno {
     background-color: #101110;
     width: 600px;
     height: 353px;
     border-radius: 10px;
   }
+
   .cajaUno p {
     font-size: 21px;
     padding: 42px;
   }
+
   .foto {
     width: 599px;
     height: 350px;
     border-radius: 10px;
     margin-bottom: 30px;
   }
+
   .infoNosotros {
     display: block;
     margin: 20px;
@@ -1041,21 +1030,25 @@ footer .redes li a img {
     width: 576px;
     height: auto;
   }
+
   .cajaUno {
     width: 520px;
     height: 353px;
     border-radius: 10px;
   }
+
   .cajaUno p {
     font-size: 21px;
     padding: 42px;
   }
+
   .foto {
     width: 520px;
     height: 353px;
     border-radius: 10px;
     margin-bottom: 30px;
   }
+
   .infoNosotros {
     display: block;
     margin: 20px;
@@ -1065,6 +1058,7 @@ footer .redes li a img {
 }
 
 /* RESPONSIVE CONTACTO */
+
 @media (max-width: 576px) {
   .formContacto p {
     font-size: 40px;
